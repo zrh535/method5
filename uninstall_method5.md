@@ -4,8 +4,11 @@ Uninstall Method5
 These steps will permanently remove *ALL* Method5 data, configuration, and objects from the management server and any remote targets.  However it will not remove any user-generated data that was given a custom name.
 
 First, let's make sure that nobody accidentally runs this as a script:
+
+```sql
 	exit;
 	exit;
+```
 
 Finally, when you're done uninstalling, I'd like to know what went wrong and what we can do to improve things for others.  I'd appreciate it if you could create a GitHub issue or send me an email at jon@jonheller.org.
 
@@ -15,6 +18,7 @@ Remove from Management Server
 
 Run these steps as SYS on the management server.  To make sure you really want to do this, the step is commented out.  Remove the multiline comment and unindent before running.
 
+```sql
 /*
 	--Stop current jobs:
 	begin
@@ -138,6 +142,7 @@ Run these steps as SYS on the management server.  To make sure you really want t
 	drop procedure sys.get_method5_hashes;
 	drop procedure sys.m5_protect_config_tables;
 */
+```
 
 If you are only uninstalling to re-install, make sure you completely log out of all sessions before installing anything.
 
@@ -147,6 +152,7 @@ Remove from Remote Targets
 
 Login to each remote target as SYS and run the below command.  THERE'S NO TURNING BACK FROM THIS!  To make sure you really want to do this, the step is commented out.  Remove the multiline comment and unindent before running.
 
+```sql
 /*
 	--Kill any active Method5 sessions
 	begin
@@ -168,3 +174,4 @@ Login to each remote target as SYS and run the below command.  THERE'S NO TURNIN
 	drop role m5_minimum_remote_privs;
 	drop role m5_optional_remote_privs;
 */
+```
