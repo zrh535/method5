@@ -94,7 +94,13 @@ You probably want to use a meaningful profile for Method5.  Whatever you select 
 7: Run steps in administer_method5.md.
 --------------------------------------
 
-See the file [administer_method5.md](administer_method5.md) for details.
+See the file [administer_method5.md](administer_method5.md) for details. Run the steps in this order
+
+  1. [Access Control](administer_method5.md#access_control)
+  2. [Install Method5 on remote databases.](administer_method5.md#install_method5_on_remote_databases)
+  3. [Add and test database links.](administer_method5.md#add_and_test_database_links)
+  4. [Ad hoc statements to customize database links.](administer_method5.md#customize_database_links)
+  5. [Configure Target Groups.](administer_method5.md#configure_target_groups)
 
 
 8: Install Method5 housekeeping jobs and global data dictionary.
