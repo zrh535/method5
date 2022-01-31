@@ -1,5 +1,5 @@
-Install Method5
-===============
+# Install Method5
+
 
 Installing Method5 is a one-time, semi-automated process.  Pick one person to install and administer Method5.  That person should have intermediate DBA skills, and preferably some development experience.
 
@@ -10,8 +10,7 @@ If you are using the multitenant architecture, Method5 has currently only been t
 If you want help with the installation please send an email to Jon Heller, jon@jonheller.org.  Or you can submit an issue to the GitHub repository.
 
 
-1: Check pre-requisites.
-------------------------
+## 1: Check pre-requisites.
 
 Read and understand these requirements:
 
@@ -31,8 +30,7 @@ Read and understand these requirements:
 	SQL> quit
 ```
 
-2: Install SYS components.
---------------------------
+## 2: Install SYS components.
 
 Run this script on the management server as SYS.  It's a small script, you can either copy and paste the statements or run it in SQL*Plus.  It should not generate any errors.  For example:
 
@@ -44,8 +42,7 @@ Run this script on the management server as SYS.  It's a small script, you can e
 	SQL> quit
 ```
 
-3: Install Method5 objects.
----------------------------
+## 3: Install Method5 objects.
 
 Run this script on the management server as a user with the DBA role, in SQL*Plus.  This user will be the default Method5 administrator so you should use a personal account.  The only argument is the port of the master database.  There are several ways to find the port, such as running the command "lsnrctl status".  (If you get the port wrong it can be fixed later when the database links are customized.)  Ths script should not generate any errors.
 
@@ -54,8 +51,7 @@ Run this script on the management server as a user with the DBA role, in SQL*Plu
 	SQL> quit
 ```
 
-4: Configure M5_DATABASE.
--------------------------
+## 4: Configure M5_DATABASE.
 
 Run this step on the management server as a user with the DBA role.
 
@@ -66,8 +62,7 @@ The host and database columns have size and value restrictions, since those name
 Four sample rows were inserted by default, use them to get started.  Don't worry about adding all your databases or getting it 100% perfect right away.  Come back to this step later after you've used Method5 for a while.
 
 
-5: Configure default targets.
------------------------------
+## 5: Configure default targets.
 
 Run this code on the management server as a user with the DBA role.
 
@@ -80,8 +75,7 @@ By default, Method5 runs against all targets.  This default can be changed from 
 	commit;
 ```
 
-6: Set Method5 profile.
------------------------
+## 6: Set Method5 profile.
 
 Run this optional code on the management server as a user with the DBA role.
 
@@ -91,8 +85,7 @@ You probably want to use a meaningful profile for Method5.  Whatever you select 
 	alter user method5 profile &PROFILE_NAME ;
 ```
 
-7: Run steps in administer_method5.md.
---------------------------------------
+## 7: Run steps in administer_method5.md.
 
 See the file [administer_method5.md](administer_method5.md) for details. Run the steps in this order
 
@@ -103,8 +96,7 @@ See the file [administer_method5.md](administer_method5.md) for details. Run the
   5. [Configure Target Groups.](administer_method5.md#configure_target_groups)
 
 
-8: Install Method5 housekeeping jobs and global data dictionary.
-----------------------------------------------------------------
+## 8: Install Method5 housekeeping jobs and global data dictionary.
 
 Run these scripts on the management server as a user with the DBA role, in SQL*Plus.  They must NOT be run by SYS.  They should not generate any errors.
 
@@ -113,8 +105,7 @@ Run these scripts on the management server as a user with the DBA role, in SQL*P
 	SQL> @code/install_method5_global_data_dictionary.sql
 ```
 
-9: Run integration tests to verify installation. (optional - only for developers)
----------------------------------------------------------------------------------
+## 9: Run integration tests to verify installation. (optional - only for developers)
 
 Run this code on the management server, as a user who has the DBA role and is a Method5 administrator.
 
@@ -134,7 +125,6 @@ Replace the "&" values with real values.  If possible, pick two databases that u
 That command will output a SQL*Plus script to run to test several temporary users.  Run that script on a command line.  The output should display multiple "PASS" messages, but no "FAIL" messages.
 
 
-11: Populate M5_DATABASE with OEM data. (optional)
---------------------------------------------------
+## 10: Populate M5_DATABASE with OEM data. (optional)
 
-If you use Oracle Enterprise Manager (OEM) and want to use it to populate the table M5_DATABASE see the file examples/Load OEM data into M5_DATABASE.sql.
+If you use Oracle Enterprise Manager (OEM) and want to use it to populate the table M5_DATABASE see the file [Load OEM data into M5_DATABASE.sql](examples/Load%20OEM%20data%20into%20M5_DATABASE.sql).
