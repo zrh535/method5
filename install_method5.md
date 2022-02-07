@@ -27,7 +27,7 @@ SQL> quit
 
 ## 2: Install SYS components
 
-Run this script on the management server as SYS. It's a small script, you can either copy and paste the statements or run it in SQL*Plus. It should not generate any errors. For example:
+Run this script on the management server as `SYS`. It's a small script, you can either copy and paste the statements or run it in `SQL*Plus`. It should not generate any errors. For example:
 
 ```shell
 C:\> cd Method5
@@ -39,26 +39,26 @@ SQL> quit
 
 ## 3: Install Method5 objects
 
-Run this script on the management server as a user with the DBA role, in SQL*Plus. This user will be the default Method5 administrator so you should use a personal account. The only argument is the port of the master database. There are several ways to find the port, such as running the command `lsnrctl status`. (If you get the port wrong it can be fixed later when the database links are customized.) Ths script should not generate any errors.
+Run this script on the management server as a user with the `DBA` role, in `SQL*Plus`. This user will be the default Method5 administrator so you should use a personal account. The only argument is the port of the master database. There are several ways to find the port, such as running the command `lsnrctl status`. (If you get the port wrong it can be fixed later when the database links are customized.) Ths script should not generate any errors.
 
-```shell
-SQL> @code/install_method5_objects.sql 1521
-SQL> quit
+```sql
+@code/install_method5_objects.sql 1521
+quit
 ```
 
 ## 4: Configure M5_DATABASE
 
-Run this step on the management server as a user with the DBA role.
+Run this step on the management server as a user with the `DBA` role.
 
-Manually add rows to the main configuration table, METHOD5.M5_DATABASE. This table is critical to the configuration of the system, it is used for filtering databases and creating links. Pay close attention to the details.
+Manually add rows to the main configuration table, `METHOD5.M5_DATABASE`. This table is critical to the configuration of the system, it is used for filtering databases and creating links. Pay close attention to the details.
 
-The host and database columns have size and value restrictions, since those names are both used to create a database link names. If you have a host or database name that doesn't fit those rules, use an alias in those columns. Later in the installation, in step #3 in administer_method5.md, you will be able to customize the connection string for the database links and use whatever names are necessary.
+The host and database columns have size and value restrictions, since those names are both used to create a database link names. If you have a host or database name that doesn't fit those rules, use an alias in those columns. Later in the installation, in step #3 in [administer_method5.md](administer_method5.md), you will be able to customize the connection string for the database links and use whatever names are necessary.
 
 Four sample rows were inserted by default, use them to get started. Don't worry about adding all your databases or getting it 100% perfect right away. Come back to this step later after you've used Method5 for a while.
 
-## 5: Configure default targets
+## 5: Configure default targets (optional)
 
-Run this code on the management server as a user with the DBA role.
+Run this optional code on the management server as a user with the `DBA` role.
 
 By default, Method5 runs against all targets. This default can be changed from `%` to some other string like this:
 
@@ -69,9 +69,9 @@ update method5.m5_config
 commit;
 ```
 
-## 6: Set Method5 profile
+## 6: Set Method5 profile (optional)
 
-Run this optional code on the management server as a user with the DBA role.
+Run this optional code on the management server as a user with the `DBA` role.
 
 You probably want to use a meaningful profile for Method5. Whatever you select here will also be used in remote databases.
 
@@ -91,7 +91,7 @@ See the file [administer_method5.md](administer_method5.md) for details. Run the
 
 ## 8: Install Method5 housekeeping jobs and global data dictionary
 
-Run these scripts on the management server as a user with the DBA role, in SQL*Plus. They must NOT be run by SYS. They should not generate any errors.
+Run these scripts on the management server as a user with the `DBA` role, in `SQL*Plus`. **They must NOT be run by `SYS`**. They should not generate any errors.
 
 ```shell
 SQL> @code/install_method5_housekeeping_jobs.sql
@@ -100,9 +100,9 @@ SQL> @code/install_method5_global_data_dictionary.sql
 
 ## 9: Run integration tests to verify installation. (optional - only for developers)
 
-Run this code on the management server, as a user who has the DBA role and is a Method5 administrator.
+Run this code on the management server, as a user who has the `DBA` role and is a Method5 administrator.
 
-Replace the "&" values with real values. If possible, pick two databases that use a different version of Oracle - that will more thoroughly test all features.
+Replace the `"&"` values with real values. If possible, pick two databases that use a different version of Oracle - that will more thoroughly test all features.
 
 ```sql
 select method5.method5_test.get_run_script(
