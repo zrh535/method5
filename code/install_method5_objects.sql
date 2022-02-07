@@ -212,7 +212,7 @@ comment on column method5.m5_role.install_links_in_schema    is 'Are private lin
 comment on column method5.m5_role.run_as_m5_or_sandbox       is 'Run as the user Method5 (with all privileges) or as a temporary sandbox users with precisely controlled privileges.  Either M5 or SANDBOX.';
 comment on column method5.m5_role.sandbox_default_ts         is 'The permanent tablespace for the sandbox user.  Only used if RUN_AS_M5_OR_SANDBOX is set to SANDBOX.  If NULL or the tablespace is not found the default permanent tablespace is used.';
 comment on column method5.m5_role.sandbox_temporary_ts       is 'The temporary tablespace for the sandbox user.  Only used if RUN_AS_M5_OR_SANDBOX is set to SANDBOX.  If NULL or the tablespace is not found the default temporary tablespace is used.';
-comment on column method5.m5_role.sandbox_quota              is 'The quota on the permanent tablespace for the sanbox user.  Only used if RUN_AS_M5_OR_SANDBOX is set to SANDBOX.  This string can be a SIZE_CLAUSE.  For example, the values can be 10G, 9999999, 5M, etc.  If NULL then UNLIMITED will be used.';
+comment on column method5.m5_role.sandbox_quota              is 'The quota on the permanent tablespace for the sandbox user.  Only used if RUN_AS_M5_OR_SANDBOX is set to SANDBOX.  This string can be a SIZE_CLAUSE.  For example, the values can be 10G, 9999999, 5M, etc.  If NULL then UNLIMITED will be used.';
 comment on column method5.m5_role.sandbox_profile            is 'The profile used for the sandbox user.  Only used if RUN_AS_M5_OR_SANDBOX is set to SANDBOX.  If NULL or the profile is not found the DEFAULT profile is used.';
 comment on column method5.m5_role.description                is 'Description of the role.';
 comment on column method5.m5_role.changed_by                 is 'User who last changed this row.';
@@ -603,7 +603,7 @@ end;
 
 
 ---------------------------------------
---#8: Audit Method5 objects. 
+--#8: Audit Method5 objects.
 audit all on method5.m5_audit;
 audit all on method5.m5_pkg;
 
