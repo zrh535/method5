@@ -93,9 +93,9 @@ See the file [administer_method5.md](administer_method5.md) for details. Run the
 
 Run these scripts on the management server as a user with the `DBA` role, in `SQL*Plus`. **They must NOT be run by `SYS`**. They should not generate any errors.
 
-```shell
-SQL> @code/install_method5_housekeeping_jobs.sql
-SQL> @code/install_method5_global_data_dictionary.sql
+```sql
+@code/install_method5_housekeeping_jobs.sql
+@code/install_method5_global_data_dictionary.sql
 ```
 
 ## 9: Run integration tests to verify installation. (optional - only for developers)
